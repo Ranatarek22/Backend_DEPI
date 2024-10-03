@@ -1,0 +1,21 @@
+# Node.js dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Log files
+*.log
+
+# Ignore environment variable files
+.env
+
+
+# MacOS system files
+.DS_Store
+
+# IDE config files
+.idea/
+*.sublime-workspace
+*.sublime-project
