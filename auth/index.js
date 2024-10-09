@@ -2,8 +2,10 @@ const express = require("express");
 const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const connectDB = require("./config/db");
-const cors = require("cors"); // Import the cors package
+const cors = require("cors");
 const authRoutes = require("./routes/authRoutes");
+const productRoutes = require("./routes/productRoutes");
+const path = require("path");
 
 dotenv.config();
 connectDB();
@@ -13,16 +15,18 @@ const app = express();
 // CORS configuration
 app.use(
   cors({
-    origin: "*", // Allow React app from this origin
-    methods: "GET,POST,PUT,DELETE", // Allowed HTTP methods
-    credentials: true, // Allow cookies or other credentials
+    origin: "http://localhost:5173", // Adjust this as necessary for your frontend
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true,
   })
 );
 
 app.use(express.json());
 app.use(cookieParser());
+app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve static files from uploads directory
 
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
 app.get("/", (req, res) => {
   res.send("Hello from Express with MongoDB Atlas!");
 });
