@@ -15,7 +15,7 @@ const app = express();
 // CORS configuration
 app.use(
   cors({
-    origin: "http://localhost:5173", // Adjust this as necessary for your frontend
+    origin: "*", 
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })
@@ -23,7 +23,7 @@ app.use(
 
 app.use(express.json());
 app.use(cookieParser());
-app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // Serve static files from uploads directory
+app.use("/uploads", express.static(path.join(__dirname, "uploads"))); 
 
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
