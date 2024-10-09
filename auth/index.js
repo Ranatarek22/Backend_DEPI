@@ -13,7 +13,7 @@ const app = express();
 // CORS configuration
 app.use(
   cors({
-    origin: "http://localhost:5173", // Allow React app from this origin
+    origin: "*", // Allow React app from this origin
     methods: "GET,POST,PUT,DELETE", // Allowed HTTP methods
     credentials: true, // Allow cookies or other credentials
   })
